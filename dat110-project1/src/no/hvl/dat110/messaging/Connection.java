@@ -45,20 +45,17 @@ public class Connection {
 	*/
 	public Message receive() {
 
-		Message message;
+		Message message = new Message();;
 		byte[] recvbuf;
 
 		recvbuf = new byte[MessageConfig.SEGMENTSIZE];
 
         try {
-         inStream.read(recvbuf, 0, MessageConfig.SEGMENTSIZE);
-
+        	inStream.read(recvbuf, 0, recvbuf.length);
+        	message.decapsulate(recvbuf);
         }catch (IOException e) {
             e.printStackTrace();
         }
-
-        message = new Message();
-        message.decapsulate(recvbuf);
 
         return message;
 
