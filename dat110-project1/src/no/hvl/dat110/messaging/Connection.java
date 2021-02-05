@@ -40,6 +40,9 @@ public class Connection {
 		  
 	}
 
+	/**
+	* Leser data fra TCP connection
+	*/
 	public Message receive() {
 
 		Message message;
