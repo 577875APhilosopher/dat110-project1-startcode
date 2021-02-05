@@ -37,17 +37,20 @@ public class RPCServer {
 		   int rpcid;
 		   
 		   // TODO
+		    
 		   
-		   // - invoke the method
-		   // - send back message containing RPC reply
-			
-		   byte[] data = connection.receive().getData(); // receive message containing RPC request
+		   Message msg = connection.receive();
+		   byte[] data = msg.getData(); // receive message containing RPC request
 		   
 		   rpcid = Byte.toUnsignedInt(data[0]); // - receive message containing RPC request
 		   
-		  RPCImpl impl = services.get(rpcid); // - receive message containing RPC request
-		  
-		  // TODO: HER ER DU NÅ SEBASTIAN
+		   RPCImpl impl = services.get(rpcid); // - receive message containing RPC request
+		   
+		   byte[] byteTosendBack = impl.invoke(data); // - invoke the method
+		   
+		   msg = new Message(byteTosendBack);
+		   
+		   connection.send(msg); // - send back message containing RPC reply
 
 		   if (rpcid == RPCCommon.RPIDSTOP) {
 			   stop = true;
