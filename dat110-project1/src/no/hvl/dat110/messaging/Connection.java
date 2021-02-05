@@ -31,12 +31,13 @@ public class Connection {
 	}
 
 	public void send(Message message) {
-
-		// TODO
-		// encapsulate the data contained in the message and write to the output stream
-		// Hint: use the encapsulate method on the message
-		throw new UnsupportedOperationException(TODO.method());
-
+		
+		  try {
+	            outStream.write(message.encapsulate(), 0, MessageConfig.SEGMENTSIZE);
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        }
+		  
 	}
 
 	public Message receive() {
@@ -44,19 +45,22 @@ public class Connection {
 		Message message;
 		byte[] recvbuf;
 
-		// TODO
-		// read a segment (128 bytes) from the input stream and decapsulate into message
-		// Hint: create a new Message object and use the decapsulate method
-		
-		if (true) {
-			throw new RuntimeException("not yet implemented");
-		}
+		recvbuf = new byte[MessageConfig.SEGMENTSIZE];
 
-		return message;
+        try {
+         inStream.read(recvbuf, 0, MessageConfig.SEGMENTSIZE);
+
+        }catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        message = new Message();
+        message.decapsulate(recvbuf);
+
+        return message;
 
 	}
 
-	// close the connection by closing streams and the underlying socket
 	public void close() {
 
 		try {
