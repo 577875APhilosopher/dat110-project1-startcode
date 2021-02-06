@@ -2,6 +2,8 @@ package no.hvl.dat110.rpc;
 
 import java.util.Arrays;
 
+import java.nio.ByteBuffer;
+
 import no.hvl.dat110.TODO;
 
 public class RPCUtils {
@@ -14,11 +16,15 @@ public class RPCUtils {
 	public static byte[] marshallString(byte rpcid, String str) {
 
 		byte[] encoded;
-
+		
 		// TODO: marshall RPC identifier and string into byte array
-
-		if (true) {
-			throw new UnsupportedOperationException(TODO.method());
+		
+		encoded = new byte[str.getBytes().length + 1];
+		
+		encoded[0] = rpcid;
+		
+		for(int i = 0; i < str.getBytes().length; i++) {
+			encoded[ i + 1 ] = str.getBytes()[i];
 		}
 
 		return encoded;
@@ -29,6 +35,8 @@ public class RPCUtils {
 		String decoded;
 
 		// TODO: unmarshall String contained in data into decoded
+		
+		
 
 		if (true) {
 			throw new UnsupportedOperationException(TODO.method());
@@ -39,13 +47,9 @@ public class RPCUtils {
 
 	public static byte[] marshallVoid(byte rpcid) {
 
-		byte[] encoded;
+		byte[] encoded = new byte[1];
 
-		// TODO: marshall RPC identifier in case of void type
-
-		if (true) {
-			throw new UnsupportedOperationException(TODO.method());
-		}
+	    encoded[0] = rpcid;
 
 		return encoded;
 
@@ -82,9 +86,14 @@ public class RPCUtils {
 		byte[] encoded;
 
 		// TODO: marshall RPC identifier and string into byte array
-
-		if (true) {
-			throw new UnsupportedOperationException(TODO.method());
+		
+		byte[] size = ByteBuffer.allocate(4).putInt(x).array();
+		encoded = new byte[size.length + 1];
+		
+		encoded[0] = rpcid;
+		
+		for(int i = 0; i < size.length; i++) {
+			encoded[ i + 1 ] = size[i];
 		}
 
 		return encoded;
