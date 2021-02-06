@@ -33,14 +33,8 @@ public class RPCUtils {
 	public static String unmarshallString(byte[] data) {
 
 		String decoded;
-
-		// TODO: unmarshall String contained in data into decoded
 		
-		
-
-		if (true) {
-			throw new UnsupportedOperationException(TODO.method());
-		}
+		decoded = new String(Arrays.copyOfRange(data, 1, data.length));
 
 		return decoded;
 	}
