@@ -98,10 +98,14 @@ public class RPCUtils {
 		int decoded;
 
 		// TODO: unmarshall integer contained in data
-
-		if (true) {
-			throw new UnsupportedOperationException(TODO.method());
+		
+		byte[] size = new byte[data.length - 1];
+		
+		for(int i = 0; i < size.length; i++) {
+			size[ i + 1 ] = data[i];
 		}
+		
+		decoded = ByteBuffer.wrap(size).getInt();
 
 		return decoded;
 
