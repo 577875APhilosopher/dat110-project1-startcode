@@ -26,7 +26,8 @@ public class Message {
 		
 		byte[] encoded = new byte[MessageConfig.SEGMENTSIZE];
 		
-		encoded[0] = (byte) payload.length;
+		Integer length = payload.length;
+		encoded[0] = length.byteValue();
 		
 		for (int i = 0; i < payload.length; i++) {
 			encoded[i+1]=payload[i];
