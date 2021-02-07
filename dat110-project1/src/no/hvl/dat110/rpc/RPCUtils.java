@@ -95,8 +95,6 @@ public class RPCUtils {
 	public static int unmarshallInteger(byte[] data) {
 
 		int decoded;
-
-		
 		decoded = ByteBuffer.wrap(data).getInt(1);
 
 		return decoded;
