@@ -34,7 +34,6 @@ public class Connection {
 		
 		  try {
 	            outStream.write(message.encapsulate());
-	            outStream.flush();
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	        }
@@ -46,13 +45,13 @@ public class Connection {
 	*/
 	public Message receive() {
 
-		Message message = new Message();;
+		Message message = new Message();
 		byte[] recvbuf;
 
 		recvbuf = new byte[MessageConfig.SEGMENTSIZE];
 
         try {
-        	inStream.read(recvbuf, 0, recvbuf.length);
+        	inStream.read(recvbuf);
         	message.decapsulate(recvbuf);
         }catch (IOException e) {
             e.printStackTrace();
