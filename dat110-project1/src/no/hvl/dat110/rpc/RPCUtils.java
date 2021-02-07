@@ -82,15 +82,17 @@ public class RPCUtils {
 		// TODO: marshall RPC identifier and string into byte array
 		
 		byte[] size = ByteBuffer.allocate(4).putInt(x).array();
+		
 		encoded = new byte[size.length + 1];
 		
 		encoded[0] = rpcid;
 		
 		for(int i = 0; i < size.length; i++) {
-			encoded[ i + 1 ] = size[i];
+			encoded[i + 1] = size[i];
 		}
-
+		
 		return encoded;
+
 	}
 
 	public static int unmarshallInteger(byte[] data) {
@@ -101,12 +103,12 @@ public class RPCUtils {
 		
 		byte[] size = new byte[data.length - 1];
 		
-		for(int i = 0; i < size.length; i++) {
-			size[ i + 1 ] = data[i];
+		for(int i = 1; i < data.length; i++) {
+			size[ i - 1 ] = data[i];
 		}
 		
 		decoded = ByteBuffer.wrap(size).getInt();
-
+			
 		return decoded;
 
 	}
