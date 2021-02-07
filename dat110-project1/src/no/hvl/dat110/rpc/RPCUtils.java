@@ -99,7 +99,7 @@ public class RPCUtils {
 
 		int decoded;
 
-		// TODO: unmarshall integer contained in data
+		// TODO: ufnmarshall integer contained in data
 		
 		byte[] size = new byte[data.length - 1];
 		
