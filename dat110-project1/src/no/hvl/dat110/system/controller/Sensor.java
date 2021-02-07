@@ -12,8 +12,7 @@ public class Sensor extends RPCStub {
 		int temp;
 		
         // implements the client-side stub for the int read() RPC method.
-		rpcclient.connect();
-		byte[] tempTemp = RPCUtils.marshallInteger(RPCID, 0);
+		byte[] tempTemp = RPCUtils.marshallVoid(RPCID);
 		byte[] response = rpcclient.call(tempTemp);
 		temp = RPCUtils.unmarshallInteger(response);
 
