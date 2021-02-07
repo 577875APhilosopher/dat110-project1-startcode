@@ -25,11 +25,13 @@ public class Message {
 	public byte[] encapsulate() {
 		
 		byte[] encoded = new byte[MessageConfig.SEGMENTSIZE];
-		encoded[0]=(byte) payload.length;
 		
-		for (int i =0; i<payload.length; i++) {
+		encoded[0] = (byte) payload.length;
+		
+		for (int i = 0; i < payload.length; i++) {
 			encoded[i+1]=payload[i];
 		}
+		
 		return encoded;
 		
 	}
@@ -40,7 +42,7 @@ public class Message {
 		this.payload = new byte[length];
 		
 		for (int i = 0; i<length; i++) {
-			this.payload[i]=received[i+1];
+			this.payload[i] = received[i+1];
 		}
 		
 		

@@ -33,7 +33,8 @@ public class Connection {
 	public void send(Message message) {
 		
 		  try {
-	            outStream.write(message.encapsulate(), 0, MessageConfig.SEGMENTSIZE);
+	            outStream.write(message.encapsulate());
+	            outStream.flush();
 	        } catch (IOException e) {
 	            e.printStackTrace();
 	        }
