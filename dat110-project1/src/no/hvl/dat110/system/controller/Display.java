@@ -12,7 +12,8 @@ public class Display extends RPCStub {
 		rpcclient.connect();
 		byte[] request = RPCUtils.marshallString(RPCID, message);
 		rpcclient.call(request);
-		RPCUtils.unmarshallString(request);
+		
+		RPCUtils.unmarshallVoid(request);
 		
 	}
 }
