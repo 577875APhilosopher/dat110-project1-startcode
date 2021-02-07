@@ -28,11 +28,12 @@ public class Controller  {
 		// create local display and sensor objects
 		// register display and sensor objects in the RPC layer
 		
-		sensor = new Sensor();
 		display = new Display();
+		sensor = new Sensor();
 		
-		sensorclient.register(sensor);
 		displayclient.register(display);
+		sensorclient.register(sensor);
+		
 		
 		// register stop methods in the RPC layer
 		displayclient.register(stopdisplay);
