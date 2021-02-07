@@ -15,18 +15,16 @@ public class RPCUtils {
 	
 	public static byte[] marshallString(byte rpcid, String str) {
 
-		byte[] encoded;
-		
-		// TODO: marshall RPC identifier and string into byte array
-		
-		encoded = new byte[str.getBytes().length + 1];
+		byte[] encoded = new byte[str.getBytes().length + 1];
 		
 		encoded[0] = rpcid;
 		
-		for(int i = 0; i < str.getBytes().length; i++) {
-			encoded[ i + 1 ] = str.getBytes()[i];
+		byte[] s = str.getBytes();
+		
+		for(int i = 1; i < encoded.length; i++) {
+			encoded[i] = s[i-1];
 		}
-
+		
 		return encoded;
 	}
 
@@ -50,8 +48,9 @@ public class RPCUtils {
 	}
 
 	public static void unmarshallVoid(byte[] data) {
-
+		
 		// TODO: unmarshall void type
+		return;
 	}
 
 	public static byte[] marshallBoolean(byte rpcid, boolean b) {
@@ -77,18 +76,16 @@ public class RPCUtils {
 
 	public static byte[] marshallInteger(byte rpcid, int x) {
 
-		byte[] encoded;
+		byte[] encoded = new byte[5];
 
 		// TODO: marshall RPC identifier and string into byte array
 		
-		byte[] size = ByteBuffer.allocate(4).putInt(x).array();
-		
-		encoded = new byte[size.length + 1];
-		
 		encoded[0] = rpcid;
 		
-		for(int i = 0; i < size.length; i++) {
-			encoded[i + 1] = size[i];
+		byte[] size = ByteBuffer.allocate(4).putInt(x).array();
+		
+		for(int i = 1; i < encoded.length; i++) {
+			encoded[i] = size[i - 1];
 		}
 		
 		return encoded;
@@ -101,13 +98,7 @@ public class RPCUtils {
 
 		// TODO: ufnmarshall integer contained in data
 		
-		byte[] size = new byte[data.length - 1];
-		
-		for(int i = 1; i < data.length; i++) {
-			size[ i - 1 ] = data[i];
-		}
-		
-		decoded = ByteBuffer.wrap(size).getInt();
+		decoded = ByteBuffer.wrap(Arrays.copyOfRange(data, 1, data.length)).getInt();
 			
 		return decoded;
 
