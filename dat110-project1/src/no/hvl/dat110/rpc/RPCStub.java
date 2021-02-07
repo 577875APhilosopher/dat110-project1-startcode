@@ -6,8 +6,6 @@ public abstract class RPCStub {
 
 	protected RPCClient rpcclient;
 	
-	public void register(RPCClient rmiclient) {
-		this.rpcclient = rmiclient;
-	}
+	public void register(RPCClient rmiclient) { this.rpcclient = rmiclient; }
 	
 }
