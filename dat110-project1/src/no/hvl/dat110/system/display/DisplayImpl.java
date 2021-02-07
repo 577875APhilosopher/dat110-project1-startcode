@@ -15,13 +15,11 @@ public class DisplayImpl implements RPCImpl {
 		byte[] reply;
 		byte rpcid;
 		
-		// TODO: 
-		// implement unmarshalling, call, and marshall for write RPC method
-		// look at how this is done int he SensorImpl for the read method
+		rpcid=request[0];
 		
-		if (true) {
-			throw new UnsupportedOperationException(TODO.method());
-		}
+		String message = RPCUtils.unmarshallString(request);
+		write(message);
+		reply=RPCUtils.marshallVoid(rpcid);
 		
 		return reply;
 	}
