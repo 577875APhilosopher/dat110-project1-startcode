@@ -9,6 +9,7 @@ public class Display extends RPCStub {
 
 	public void write(String message) {
 		
+		rpcclient.connect();
 		byte[] request = RPCUtils.marshallString(RPCID, message);
 		rpcclient.call(request);
 		RPCUtils.unmarshallString(request);

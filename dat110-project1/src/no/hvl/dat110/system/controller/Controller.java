@@ -31,8 +31,8 @@ public class Controller  {
 		sensor = new Sensor();
 		display = new Display();
 		
-		sensor.register(sensorclient);
-		display.register(displayclient);
+		sensorclient.register(sensor);
+		displayclient.register(display);
 		
 		// register stop methods in the RPC layer
 		displayclient.register(stopdisplay);
@@ -43,7 +43,7 @@ public class Controller  {
 		
 		for(int i = 0; i < N; i++) {
 			int temp = sensor.read();
-			display.write("" + temp);
+			display.write(temp + " °C");
 			
 			try {
 				Thread.sleep(1000);

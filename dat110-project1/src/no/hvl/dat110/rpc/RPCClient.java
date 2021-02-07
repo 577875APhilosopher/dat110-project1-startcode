@@ -19,14 +19,24 @@ public class RPCClient {
 	}
 	
 	public void connect() {
-
-		connection = msgclient.connect();
+		
+		if (connection == null) {
+			try {
+				connection = msgclient.connect();
+			} catch (Exception e) {
+				System.out.println("An error occurred: " + e);
+			}
+		}
 	}
 	
 	public void disconnect() {
 
-		if(connection != null) {
-			connection.close();
+		try{
+			if(connection != null) {
+				connection.close();
+			}
+		} catch (Exception e) {
+			System.out.println("An error occurred: " + e);
 		}
 	}
 	
