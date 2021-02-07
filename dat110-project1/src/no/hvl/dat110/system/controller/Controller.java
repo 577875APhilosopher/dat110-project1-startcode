@@ -43,7 +43,7 @@ public class Controller  {
 		
 		for(int i = 0; i < N; i++) {
 			int temp = sensor.read();
-			display.write(" " + temp);
+			display.write("DISPLAY: " + temp);
 			
 			try {
 				Thread.sleep(1000);
