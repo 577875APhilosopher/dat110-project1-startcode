@@ -20,9 +20,7 @@ public class DisplayImpl implements RPCImpl {
 		
 		rpcid = request[0];
 		
-		String message = RPCUtils.unmarshallString(request);
-		write(message);
-		reply=RPCUtils.marshallString(rpcid, message);
+		reply = RPCUtils.marshallString(rpcid, message);
 		
 		return reply;
 	}
