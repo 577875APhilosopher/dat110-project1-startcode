@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 package no.hvl.dat110.rpc;
 
 import java.util.Arrays;
@@ -195,8 +194,6 @@ public class RPCUtils {
 	public static byte[] marshallInteger(byte rpcid, int x) {
 
 		byte[] encoded= new byte[5];
-
-		// TODO: marshall RPC identifier and string into byte array
 		
 		byte[] size = ByteBuffer.allocate(4).putInt(x).array();
 		
@@ -218,4 +215,3 @@ public class RPCUtils {
 
 	}
 }
->>>>>>> 73e701aaef47a643396589618f5fdccf053919d6
