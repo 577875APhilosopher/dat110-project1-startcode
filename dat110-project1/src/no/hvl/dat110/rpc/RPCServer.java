@@ -42,15 +42,15 @@ public class RPCServer {
 		   Message msg = connection.receive();
 		   byte[] data = msg.getData(); // receive message containing RPC request
 		   
-		   rpcid = Byte.toUnsignedInt(data[0]); // - receive message containing RPC request
+		   rpcid = data [0]; // - receive message containing RPC request
 		   
 		   RPCImpl impl = services.get(rpcid); // - receive message containing RPC request
 		   
-		   byte[] byteTosendBack = impl.invoke(data); // - invoke the method
+		   byte[] svar = impl.invoke(data); // - invoke the method
 		   
-		   msg = new Message(byteTosendBack);
+		   Message response = new Message(svar);
 		   
-		   connection.send(msg); // - send back message containing RPC reply
+		   connection.send(response); // - send back message containing RPC reply
 
 		   if (rpcid == RPCCommon.RPIDSTOP) {
 			   stop = true;
