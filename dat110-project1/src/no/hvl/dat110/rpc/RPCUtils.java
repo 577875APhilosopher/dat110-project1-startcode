@@ -1,11 +1,8 @@
 <<<<<<< HEAD
 package no.hvl.dat110.rpc;
 
-import java.util.Arrays;
-
 import java.nio.ByteBuffer;
-
-import no.hvl.dat110.TODO;
+import java.util.Arrays;
 
 public class RPCUtils {
 
