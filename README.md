@@ -2,6 +2,10 @@
 
 The tasks related to this project will be part of the lab exercises in the next two weeks.
 
+### TEAMET: Phillipe, Sebastian og Mathias
+
+![](assets/Bilde.png)
+
 ### Organisation
 
 The project is to be undertaken in **groups of 2-4 students**.
